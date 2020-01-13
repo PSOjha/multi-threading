@@ -1,10 +1,13 @@
 package com.company;
 
+import com.company.download_status.DownloadStatus;
+import com.company.download_status.IDownloadStatus;
+
 public class Downloader implements Runnable {
     private int count;
-    private final DownloadStatus status;
+    private final IDownloadStatus status;
 
-    Downloader(DownloadStatus status) {
+    Downloader(IDownloadStatus status) {
         this.status = status;
     }
 
@@ -26,7 +29,7 @@ public class Downloader implements Runnable {
         return count;
     }
 
-    public DownloadStatus getStatus() {
+    public IDownloadStatus getStatus() {
         return status;
     }
 }
