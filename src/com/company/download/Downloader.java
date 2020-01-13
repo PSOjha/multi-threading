@@ -1,7 +1,6 @@
-package com.company;
+package com.company.download;
 
-import com.company.download_status.DownloadStatus;
-import com.company.download_status.IDownloadStatus;
+import com.company.download.download_status.IDownloadStatus;
 
 public class Downloader implements Runnable {
     private int count;
@@ -21,7 +20,7 @@ public class Downloader implements Runnable {
         System.out.println("Downloaded  " + Thread.currentThread().getName());
         status.done();
         synchronized (status) {
-            status.notifyAll();
+            status.notifyAll();//resume other thread if it pause with await of this parameter
         }
     }
 

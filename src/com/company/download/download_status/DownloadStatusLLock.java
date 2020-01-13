@@ -1,4 +1,4 @@
-package com.company.download_status;
+package com.company.download.download_status;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

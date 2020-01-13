@@ -1,4 +1,4 @@
-package com.company.download_status;
+package com.company.download.download_status;
 
 public abstract class DownloadStatus implements IDownloadStatus {
     private volatile boolean isDone;
