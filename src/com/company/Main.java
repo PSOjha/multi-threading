@@ -31,7 +31,7 @@ public class Main {
                 .thenAccept(System.out::println);
 
         var taxForAllPrice = CompletableFuture.allOf(price1, price2, tax).thenRun(() -> {
-            //allOf: Like [thenCombine] put accept muilty CompletableFuture
+            //allOf: Like [thenCombine] put accept multi CompletableFuture
             try {
                 var allPrice = priceToInt(price1.get()) + priceToInt(price2.get());
                 var allTax = tax.get() * allPrice;
@@ -40,6 +40,15 @@ public class Main {
                 e.printStackTrace();
             }
         });
+
+
+        //anyOf: take multi CompletableFuture and return value from faster
+        var faster = CompletableFuture.supplyAsync(() -> 5);
+        var slower = CompletableFuture.supplyAsync(() -> {
+            MailService.send();
+            return 2;
+        });
+        var getDataFromFaster = CompletableFuture.anyOf(faster, slower).thenAccept(System.out::println);
 
 
 //        IDownloadStatus status = new DownloadStatusSynchronized();

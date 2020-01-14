@@ -3,7 +3,7 @@ package com.company.mail;
 import java.util.concurrent.CompletableFuture;
 
 public class MailService {
-    public void send() {
+    public static void send() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -14,7 +14,7 @@ public class MailService {
     }
 
     public CompletableFuture<Void> sendAsync() {
-        return CompletableFuture.runAsync(this::send);
+        return CompletableFuture.runAsync((MailService::send));
     }
 
     public CompletableFuture<String> loginAsync(String userName) {
